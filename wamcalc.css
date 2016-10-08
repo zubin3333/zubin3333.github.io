@@ -43,6 +43,10 @@ hr {
     width: 80%;
 }
 
+.nomarg {
+    margin-bottom: 0px;
+}
+
 #copyright {
     font-size: 80%;
     position: absolute;
