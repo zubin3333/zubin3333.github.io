@@ -1,0 +1,130 @@
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+a {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: aqua;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: auto;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  color: #ffcc00;
+  font-size: 35px;
+  margin-bottom: 0px;
+}
+
+hr {
+    width: 80%;
+}
+
+#copyright {
+    font-size: 80%;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+#copyright p {
+    margin: 0 auto; 
+    color: grey;
+}
+
+#maintable {
+    margin-left: 20px;
+}
+
+#wamnum {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  color: #ffcc00;
+  font-size: 140px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  line-height: 75%;
+}
+
+#wamnums {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  color: #ffcc00;
+  font-size: 60px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#wamdisp {
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
+
+#grade {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  color: #313131;
+  background-color: #ffcc00;
+  font-size: 35px;
+  line-height: 140%;
+  margin-top: 7%;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 240px;
+    background-color: #313131;
+    text-align: center;
+}
+#parent {
+    /*margin-top: 50px;*/
+    margin-left: 240px;
+    background-color: #ececec;
+    height: 100%;
+}
+
+#main-content {
+    background-color: #ececec;
+    height: auto;
+}
+
+#morebut {
+    margin-left: 208px;
+    margin-bottom: 40px;
+}
+
+#apptitle {
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 20px;
+    margin-top: 0px;
+}
+
+#appdesc {
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 20px;
+    margin-right: 20px;
+}

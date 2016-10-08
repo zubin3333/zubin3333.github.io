@@ -1,0 +1,216 @@
+
+<link rel="stylesheet" type="text/css" href="wamcalc.css">
+
+<html>
+    <head>
+        <title>UNSW WAM Calculator</title>
+    </head>
+    <body>
+        <div id="parent">
+            <div id="sidebar">
+                <h1>YOUR WAM</h1>
+                <div id="wamdisp">
+                    <p id="wamnum">00</p>
+                    <p id="wamnums">.00</p>
+            </div>
+            <div>
+                <p id="grade">Fail</p>
+            </div>
+            <br><br><br>
+            <hr>
+            <a href="https://student.unsw.edu.au/wam" target="_blank">UNSW WAM Info</a>
+            <br>
+            <a href="/help.html" target="_blank">Help</a>
+            <br>
+            <a href="javascript:disclaimer();">Disclaimer</a>
+            <hr>
+            <div id="copyright"><p>&copy; 2016 Zubin Nanavati</p></div>    
+        </div>
+            <div id="main-content">
+                <br>
+                <h2 id="apptitle">UNSW Real-time WAM Calculator</h2>
+                <p id="appdesc"> 
+                    P's get degrees but Credits get jobs (easier). Your WAM can be important to get your foot in the door for a job. At uni some of you have to maintain a certain WAM just to stay in your degree. Do you want to know what marks you need to get in your current subjects to get a certain WAM? Or do you have a WAM goal for the end of your degree? Well simply put in the results of the subjects that you have completed already. (Hint: It might be quicker to put in semester results instead) For the subjects you haven't got marks for yet use the slider bars to "test" different results, your WAM will update on the left hand side in real time. If you need some help just click on HELP on the left hand bar. 
+                </p>
+                <br>
+                <table id="maintable">
+                    <tbody id="thetable" >
+                        <tr>
+                            <td><p>Subject/Semester<br> Name (optional)</p></td>
+                            <td><p>Units of Credit<br>(UOC)</p></td>
+                            <td><p>Grade/WAM</p></td>
+                        </tr>
+                        <tr id="0">
+                            <td><input type="text"></td>
+                            <td><input type="text" oninput="updateuoc(this)"></td>
+                            <td><input type="text" oninput="showValues(this)"></td>
+                            <td><input type="range"  min="0" max="100" value="0" oninput="showValuet(this)" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id= "morebut" onclick="addRow();">Add More Subjects/Semesters!</button>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+<script>
+    var waml = [0];
+    var uocl = [0];
+    var adjl = [0];
+     
+</script>
+
+<script type="text/javascript">
+    function showValuet(newValue) {
+        var y = newValue.parentNode.parentNode;
+        var x = y.getElementsByTagName("input");
+        x[2].value = newValue.value;
+        var tempid= y.id;
+        waml[tempid]= x[2].value;
+        adjl[tempid]= (waml[tempid])* (uocl[tempid]);
+        updatewam();
+    }
+    function showValues(newValue) {
+        var y = newValue.parentNode.parentNode;
+        var x = y.getElementsByTagName("input");
+        //console.log(newValue.value);
+        x[3].value = newValue.value;
+        var tempid= y.id;
+        waml[tempid]= x[2].value;
+        adjl[tempid]= waml[tempid]*uocl[tempid];
+        updatewam();
+    }
+    function updateuoc(newValue) {
+        var y = newValue.parentNode.parentNode;
+        var x = y.getElementsByTagName("input");
+        var tempid= y.id;
+        var numberfy = x[1].value;
+        numberfy= numberfy * 1;
+        uocl[tempid]= numberfy;
+        adjl[tempid]= waml[tempid]*uocl[tempid];
+        updatewam();
+    }
+    function updatewam() {
+        var totaladj = 0;
+        var totaluoc = 0;
+        for (i = 0; i < adjl.length; i++) { 
+            totaladj = totaladj + adjl[i];
+            totaluoc = totaluoc + uocl[i];
+        }
+        var wam = totaladj/totaluoc;
+        console.log(wam);
+        wam = roundDown(wam, 2);
+        console.log(wam);
+        if (wam > 99.99) {
+            wam = 99.99;
+        }
+        if (wam < 0) {
+            wam = 0.00;
+        }
+        //console.log(wam);
+        //console.log(waml);
+        //console.log(uocl);
+        //console.log(totaladj);
+        //console.log(totaluoc);
+        displaywam(wam);
+    }
+    
+    function displaywam(wam) {
+        var before;
+        var after;
+        if (isNaN(wam) == true) {
+            wam= "0";
+        }
+        if (typeof wam == 'undefined') {
+            wam= "0";
+        }
+//        if(wam.toString().includes(".")==false) {
+//            before = wam;
+//            after = "0";
+//            console.log(wam.toString().indexOf("."));
+//        }
+        if(wam.toString().indexOf(".")==-1) {
+            before = wam;
+            after = "0";
+            console.log(wam.toString().indexOf("."));
+        }
+        else {
+            var parts = wam.toString().split(".");
+            before = parts[0];
+            after = parts[1];
+        }
+        before = before.toString();
+        after = after.toString();
+        if(before.length == 1) {
+            before = "0"+before;
+        }
+        if(after.length == 1) {
+            after = after+"0";
+        }
+        after = "."+after;
+        //console.log(before);
+        //console.log(after);
+        document.getElementById("wamnum").innerHTML = before;
+        document.getElementById("wamnums").innerHTML = after;
+        setgrade(wam);
+    }
+    
+    function setgrade(wam) {
+        wam = wam*1;
+        if (wam < 50) {
+            document.getElementById("grade").innerHTML = "Fail";
+        }
+        else if (wam < 65) {
+            document.getElementById("grade").innerHTML = "Pass";
+        }
+        else if (wam < 75) {
+            document.getElementById("grade").innerHTML = "Credit";
+        }
+        else if (wam < 85) {
+            document.getElementById("grade").innerHTML = "Distinction";
+        }
+        else {
+            document.getElementById("grade").innerHTML = "High Distinction";
+        }
+    }
+    
+    function roundDown(number, decimals) {
+        return (Math.round(number * 100) / 100);
+    }
+    
+    function disclaimer() {
+        alert("This web application is in no way endorsed, supported or created by the uni. I am an engineering student who happens to be at this university. This web application was created with the intention to give myself a taste of Javascript. The implementation for this reason may lack in efficiency and good programming practices. Testing has been done on the output data, however this testing hasn't been rigourous for the above reason. If the result is very important to you you should double check it using the formulas provided by the university. If you do happen to find an issue with the result please send me an email at: admin@zubin3333.33mail.com. I will do my best to solve the issue");
+    }
+</script>
+
+
+<script>
+var maxID = 0;
+function getTemplateRow() {
+var x = document.getElementById("0").cloneNode(true);
+x.id = ++maxID;
+x.style.display = "";
+waml.push(0);
+uocl.push(0);
+adjl.push(0);
+return x;
+}
+function addRow() {
+    var t = document.getElementById("thetable");
+    var rows = t.getElementsByTagName("tr");
+    var r = rows[rows.length-1];
+    //r.parentNode.insertBefore(getTemplateRow(), r);
+    var x = getTemplateRow();
+    t.appendChild(x);
+    rows = t.getElementsByTagName("tr");
+    r = rows[rows.length-1];
+    var temp = r.getElementsByTagName("input");
+    temp[0].value = "";
+    temp[1].value = "";
+    temp[2].value = "";
+    temp[3].value = "0";
+}
+</script>
