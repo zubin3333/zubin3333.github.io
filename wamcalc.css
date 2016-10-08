@@ -11,6 +11,10 @@ a {
     text-decoration: none;
 }
 
+body {
+    background-color: #ececec;
+}
+
 a:hover {
     text-decoration: underline;
     color: aqua;
