@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    
+    <title>Software Manual - QStim Manual</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/base.min.css" rel="stylesheet">
+    <link href="../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="..">QStim Manual</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../quickstart/">Quick Start Guide</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Manual <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../hardware/">Hardware Overview</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../usbinterface/">USB Interface</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Software Manual</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../technical/">Technical Information</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../usbinterface/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../technical/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#software-manual">Software Manual</a></li>
+            <li class="second-level"><a href="#interacting-with-the-interface">Interacting with the interface</a></li>
+                
+            <li class="second-level"><a href="#help-and-usage-information">Help and Usage Information</a></li>
+                
+                <li class="third-level"><a href="#how-to-read-the-usage-information">How to read the usage information</a></li>
+            <li class="second-level"><a href="#commands">Commands</a></li>
+                
+                <li class="third-level"><a href="#current">Current</a></li>
+                <li class="third-level"><a href="#time">Time</a></li>
+                <li class="third-level"><a href="#window">Window</a></li>
+                <li class="third-level"><a href="#flag">Flag</a></li>
+                <li class="third-level"><a href="#run">Run</a></li>
+                <li class="third-level"><a href="#stop">Stop</a></li>
+                <li class="third-level"><a href="#status">Status</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="software-manual">Software Manual</h1>
+<p>The device provides a shell interface over a virtual serial port over USB that can be accessed by any terminal emulator on all major operating systems. Refer to the user manual and the getting started guide to learn how to connect to the device. This manual covers how to use the shell interface of the stimulator once a connection has been established.</p>
+<h2 id="interacting-with-the-interface">Interacting with the interface</h2>
+<p>Any user that has used a command prompt interface on some platform in the past will be able to quickly understand the interface provided by this device. The device prompts the user to type in a command with <code>stim&gt;</code>. Once a command has been type in, the enter key can be pressed, at which point the command is processed by the stimulator. The stimulator will respond with a confirmation of the change made. It will then prompt the user for the next command with <code>stim&gt;</code>, and again the user can enter another command. See below for an example interaction to set a current output.</p>
+<pre><code class="console">stim&gt; current p1 1000
+Current on Phase 1 of all channels set to 1000
+stim&gt; 
+</code></pre>
+
+<p>Like most command line interfaces, the user can use <kbd>Backspace</kbd> to delete characters in a command to re-enter characters.</p>
+<p>Additionally the <kbd>Up</kbd> and <kbd>Down</kbd> keyboard keys can be used to navigate the history of commands run on  the device.</p>
+<p>After the user has type the first few letters of a command name the <kbd>Tab</kbd> key can be presses to autocomplete the rest of the command in the same manner as other command line interfaces on other platforms.</p>
+<p>If no command has been entered and the <kbd>Enter</kbd> key is pressed the stimulator will simply re-prompt the user for another command without any adverse affect.</p>
+<h2 id="help-and-usage-information">Help and Usage Information</h2>
+<p>Help is the only command one needs to remember, from this one command all other usage information can be derived. Simply type help followed by the <kbd>Enter</kbd> key. This provides a list of commands that can be used on the device.</p>
+<p>Additionally, each command is has some usage information attached to it, that is displayed when the user makes a mistake using it. <strong>Intentionally</strong> making a mistake is a quick way to quickly refresh ones memory on how to use a command as it will bring up the usage message. For example the command <code>current</code> can be entered leaving out any parameters to trigger the message to appear.</p>
+<pre><code class="console">stim&gt; help
+Commands: help info echo systime mem threads test run stop status boardinfo tests window current time flag adcstart adcstop adcread eeprom calibrate setdac seeadc 
+stim&gt; current
+Usage: current [ch1|ch2|ch3|ch4] {p1|p2} &lt;microampere&gt;
+</code></pre>
+
+<h3 id="how-to-read-the-usage-information">How to read the usage information</h3>
+<p>The usage instructions are guided by the notation outlined in the <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/command-line-syntax-key">Microsoft Command-Line Syntax Key</a>. A summary of the notation:</p>
+<ul>
+<li><code>&lt;some text&gt;</code> must be replaced by a number</li>
+<li><code>[some text]</code> indicates an optional parameter </li>
+<li><code>{some text}</code> set of required items. You must choose one.</li>
+<li><code>|</code> separates items that can be repeated and used multiple times.</li>
+</ul>
+<p>For example the usage instruction for current <code>Usage: current [ch1|ch2|ch3|ch4] {p1|p2} &lt;microampere&gt;</code> shows that the user must type in <code>current</code>. Next if they can choose either to type in a channel like <code>ch1</code> or skip it. Next they must provide which phase they want to set either by typing <code>p1</code> or <code>p2</code>. Finally they must give a number to indicate the amount of current that should flow.</p>
+<h2 id="commands">Commands</h2>
+<h3 id="current">Current</h3>
+<p>The current command is used to set the current that flows in the phases during stimulation. Each phase on each channel can be set independently.</p>
+<pre><code class="console">stim&gt; current
+Usage: current [ch1|ch2|ch3|ch4] {p1|p2} &lt;microampere&gt;
+</code></pre>
+
+<p>If the user would like -1000 microampere to flow during phase 1 on channel 1 of the stimulator, they would enter the following command:</p>
+<pre><code class="console">stim&gt; current ch1 p1 -1000
+</code></pre>
+
+<p>If the user would like to change the current across all four channels to 1000 microampere in phase 2, they can simply omit the optional channel parameter, making the change global.</p>
+<pre><code class="console">stim&gt; current p2 1000
+</code></pre>
+
+<h3 id="time">Time</h3>
+<p>Unlike <code>current</code>, <code>time</code> can not be changed independently for each channel. All the channels run on the same time base. The stimulation timing is defined by 4 parameters <code>p1</code> (phase 1), <code>ip</code> (inter-phase gap), <code>p2</code> (phase 2) and <code>is</code> (inter-stimulation delay). </p>
+<pre><code class="console">stim&gt; time
+Usage: time {p1|ip|p2|is} &lt;microseconds&gt;
+Usage: time rate &lt;p1 time (us)&gt;  &lt;ip time (us)&gt;  &lt;p2 time (us)&gt; &lt;rate (Hz)&gt;
+</code></pre>
+
+<p>The time on any of the 4 time parameters can be set to a value in microseconds. The user type in time followed by the part of the waveform they want to set a time for, followed by an integer indicating the number of microseconds. For example: </p>
+<pre><code class="console">stim&gt; time p1 500
+</code></pre>
+
+<p>Alternatively the user can also specify the timing parameters in terms of a rate. In this case the user sets the phase 1, inter-phase gap and phase 2 times and also provides a rate in Hz. The stimulator will then set the inter-stimulation delay to the correct value to achieve that rate. An example where 500 microsecond phase times, 20 microsecond inter-phase gap and a rate of 100Hz is set:</p>
+<pre><code class="console">stim&gt; time rate 500 20 500 100
+</code></pre>
+
+<h3 id="window">Window</h3>
+<p>The <code>window</code> command is used to define the three window parameters.</p>
+<pre><code class="console">stim&gt; window
+Usage: window {number|pulses|space} &lt;number/microseconds&gt;
+</code></pre>
+
+<p><code>number</code> defines the number of time the window should be repeated. <code>pulses</code> defines the number of biphasic waveforms in a single window. <code>space</code> defines the amount of time in microseconds between the last biphasic in a window and the end of the window.</p>
+<p><code>number</code> and <code>pulses</code> can be set to infinite by providing the value -1. It is important to note that when <code>pulses</code> is set to infinite, the other window parameters become redundant since they will never be reached. </p>
+<p>Example usage:</p>
+<pre><code class="console">stim&gt; window pulses 1200
+</code></pre>
+
+<h3 id="flag">Flag</h3>
+<p>The <code>flag</code> command can be used to turn on or off a range of features on the device.</p>
+<pre><code class="console">stim&gt; flag
+Usage: flag [ch1|ch2|ch3|ch4] {short|cap|dummy|iso|power} {on|off}
+Usage: flag trig {on|off}
+</code></pre>
+
+<p>A range of channel specific features can be set on the device: <code>short</code> toggles electrode shorting during the inter-stim delay, <code>cap</code> toggles the existence of a series cap on the output, <code>dummy</code> toggles the existence of a dummy load on the output, <code>iso</code> toggles whether the electrode is electrically disconnected during inter-phase gap and inter-stim delay, <code>power</code> toggles the output of the channel. Usage example:</p>
+<pre><code class="console">stim&gt; flag ch1 short on 
+</code></pre>
+
+<p>Optionally, the channel parameter can be left out to apply the change all four channels of the stimulator.</p>
+<pre><code class="console">stim&gt; flag short on 
+</code></pre>
+
+<p>Triggering is a global flag that cannot be set independently for each channel as all the channels run on the same time base. Example usage:</p>
+<pre><code class="console">stim&gt; flag trig on
+</code></pre>
+
+<h3 id="run">Run</h3>
+<p>The <code>run</code> command puts the stimulator into a "running" state. If triggering is disabled, the stimulator will begin to stimulate immediately. Otherwise it will wait for a trigger signal on the trigger input to start the stimulation waveform. </p>
+<pre><code class="console">stim&gt; run
+</code></pre>
+
+<p>The <code>run</code> command does not work twice in a row, the <code>stop</code> command must be used between the uses of <code>run</code> to reset the stimulator.</p>
+<h3 id="stop">Stop</h3>
+<p>The <code>stop</code> command takes the stimulator out of a "running" state, resetting its progress, waiting for another <code>run</code> command. It will immediately stop producing current at the channels. This also applies if the stimulator was waiting for a trigger and had never started or had finished the waveform.</p>
+<pre><code class="console">stim&gt; stop
+</code></pre>
+
+<p>The <code>stop</code> command must always be used to end a stimulation, even when the stimulation has completed, this is because the stimulator hardware would still be in a "running" state. This allows for re-triggering of the waveform by external hardware (a common use case).</p>
+<h3 id="status">Status</h3>
+<p>The <code>status</code> command prints out the current state of the parameters entered by the user. </p>
+<pre><code class="console">stim&gt; status
+Global:
+    Algorithm: 0
+    Flags: NO_TRIGEN 
+    Window Pulse No.: 4294967295
+    Window Space: 0 us
+    Window No.: 600000
+    Time P1: 500 us
+    Time P2: 500 us
+    Time IP: 20 us
+    Time IS: 8980 us
+Channel 1:
+    Current P1: -1000 uA
+    Current P2: 1000 uA
+    Current DC: 0
+    Flags: SHORT NO_CAP NO_DUMMY ISO POWER 
+Channel 2:
+    Current P1: -1000 uA
+    Current P2: 1000 uA
+    Current DC: 0
+    Flags: SHORT NO_CAP NO_DUMMY ISO POWER 
+Channel 3:
+    Current P1: -1000 uA
+    Current P2: 1000 uA
+    Current DC: 0
+    Flags: SHORT NO_CAP NO_DUMMY ISO POWER 
+Channel 4:
+    Current P1: -1000 uA
+    Current P2: 1000 uA
+    Current DC: 0
+    Flags: SHORT NO_CAP NO_DUMMY ISO POWER 
+</code></pre></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+        </p>
+
+        
+        
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = ".."</script>
+    
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
