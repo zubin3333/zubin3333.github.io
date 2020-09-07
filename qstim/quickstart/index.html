@@ -156,23 +156,23 @@
 </li>
 <li>
 <p>Open Tera Term, the following prompt should appear. Click the Serial text so that the radio button next to it is filled. Then press OK at the bottom of the window.
-<img alt="screenshot" src="../img/quickstart/teraterm1.png" /></p>
+<img alt="screenshot" src="../img/quickstart/teraterm1.png" width="600" /></p>
 </li>
 <li>
 <p>Click the setup drop down menu and then click the Serial Port... entry. 
-<img alt="screenshot" src="../img/quickstart/teraterm2.jpeg" /></p>
+<img alt="screenshot" src="../img/quickstart/teraterm2.jpeg" width="600" /></p>
 </li>
 <li>
 <p>The following window will appear. Click on the Port drop down menu, if you see only one COM entry then skip this step and go to step 6. If you see multiple entries eg. COM4 and COM5, it means that there are multiple COM ports available on the PC and the correct one needs to be found. Select each of the COM ports in the menu and look at the Device Manufacturer field at the bottom (in red rectangle). Find the port that shows FTDI as the manufacturer. If more than one device comes up with FTDI as the manufacturer, disconnect as many other USB devices as possible to eliminate them as an option.
-<img alt="screenshot" src="../img/quickstart/teraterm3.jpeg" /></p>
+<img alt="screenshot" src="../img/quickstart/teraterm3.jpeg" width="600" /></p>
 </li>
 <li>
 <p>Set the Speed, Data, Parity, Stop Bits, Flow Control and Transmit Delay to the settings seen in the image below. And press the New Setting button (if you changed the port setting the text on the button may be different but it is still the correct button to press).
-<img alt="screenshot" src="../img/quickstart/teraterm4.jpeg" /></p>
+<img alt="screenshot" src="../img/quickstart/teraterm4.jpeg" width="600" /></p>
 </li>
 <li>
 <p>Hit the ENTER key on the keyboard and the text stim&gt; should appear, this is the shell prompt provided by the device. Commands like help can be entered followed by hitting the ENTER key to control the device.
-<img alt="screenshot" src="../img/quickstart/teraterm5.jpeg" /></p>
+<img alt="screenshot" src="../img/quickstart/teraterm5.jpeg" width="600" /></p>
 </li>
 </ol>
 <h2 id="macos">macOS</h2>
@@ -180,19 +180,19 @@
 <li>Plug the stimulator into a USB port on the Mac using the provided cable.</li>
 <li>
 <p>Open Terminal from the Utilities folder in the Applications folder on the Mac using Finder.
-<img alt="screenshot" src="../img/quickstart/screen1.png" /></p>
+<img alt="screenshot" src="../img/quickstart/screen1.png" width="600" /></p>
 </li>
 <li>
 <p>Type <code>ls /dev/cu.*</code> into the window and hit the return (or enter) key on the keyboard. You should get a printout of the available serial devices on the Mac. Look for an entry with the word "usbserial" in it. 
-<img alt="screenshot" src="../img/quickstart/screen2.png" /></p>
+<img alt="screenshot" src="../img/quickstart/screen2.png" width="600" /></p>
 </li>
 <li>
 <p>Type in <code>screen /dev/cu.PLACE-HOLDER 115200</code> replacing PLACE-HOLDER with the correct text found in step 3. (You can simply copy paste in the text). Don't forget the number 115200, this indicates the correct communication speed of the device. Hit the return key. 
-<img alt="screenshot" src="../img/quickstart/screen3.png" /></p>
+<img alt="screenshot" src="../img/quickstart/screen3.png" width="600" /></p>
 </li>
 <li>
 <p>Hit the return key on the keyboard and the text stim&gt; should appear, this is the shell prompt provided by the device. Commands like help can be entered followed by hitting the return key to control the device.
-<img alt="screenshot" src="../img/quickstart/screen4.png" /></p>
+<img alt="screenshot" src="../img/quickstart/screen4.png" width="600" /></p>
 </li>
 </ol>
 <h2 id="basic-stimulation">Basic Stimulation</h2>
@@ -224,7 +224,7 @@
 </li>
 </ol>
 <p>The interaction with the stimulator using the commands above can be seen in the screenshot below. The stimulator provides feedback on the entry of every command to indicate to the user what parameter has changed, or to let the user know when a mistake has been made on entry.
-<img alt="screenshot" src="../img/quickstart/stimeg1.png" /></p>
+<img alt="screenshot" src="../img/quickstart/stimeg1.png" width="600" /></p>
 <p>The stimulator should then be stimulating using those parameters from all 4 channel outputs. This does not cover the full functionality of the device. For more details on how to control the stimulator proceed to the shell manual.</p></div>
         
         
